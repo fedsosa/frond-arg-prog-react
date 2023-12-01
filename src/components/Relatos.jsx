@@ -6,10 +6,10 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 const Navegador=()=> {
   return (
    <>
-   <div style={{ imag: "url(/Avion.jpg)"  }}> 
+   <div > 
    <Navbar expand="lg" className="bg-body-tertiary">
       <Container style={{background:"grey" }}>
-        <Navbar.Brand href=" ">Relatos de viajes</Navbar.Brand>
+        <Navbar.Brand href="/">Relatos de viajes</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-
+import LoginUsuario from '../components/login';
 
 
 
@@ -8,9 +8,11 @@ const Registrar=() =>{
 
   return (
     <>
-      <Card>
-      <Card.Body>tenes que registrarte </Card.Body>
-      </Card>
+      
+      <Card.Body>
+        <LoginUsuario/>
+      </Card.Body>
+     
     
       
     </>

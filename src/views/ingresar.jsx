@@ -1,4 +1,5 @@
 import Card from 'react-bootstrap/Card';
+import IngresarUsuario from '../components/Ingresar';
 
 
 
@@ -8,9 +9,11 @@ const Ingresar=() =>{
 
   return (
     <>
-      <Card>
-      <Card.Body>ingresar</Card.Body>
-      </Card>
+      
+      <Card.Body>
+       <IngresarUsuario/>
+      </Card.Body>
+     
     
       
     </>
