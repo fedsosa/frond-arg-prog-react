@@ -39,7 +39,7 @@ const LoginUsuario=() => {
           Usuario
         </Form.Label>
         <Col sm="10">
-          <Form.Control type='email' placeholder="agregue su usuario" 
+          <Form.Control type='texto' placeholder="agregue su usuario" 
           onInput={CambiarUsuario}/>
         </Col>
       </Form.Group>

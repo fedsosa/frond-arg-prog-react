@@ -1,7 +1,50 @@
-{
+/*.card {
     background:darkgoldenrod;
     border: 2px solid black;
     margin: 15px auto 40px;
     height: 650px;
     text-align:left;
+}*/
+
+
+.Container{
+     height: 20px;
+      width: 90%;
+      background-color: powderblue;
 }
+
+
+body {
+  margin: 0;
+  display: flex;
+  justify-items: center;
+  min-width: 100vh;
+  min-height: 100vh;
+  background-image: url('./../src/assets/img/viajes.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+h2{
+  color:darkgoldenrod;
+  margin-left: 5px;
+  text-align:center;
+}
+
+/*button {
+  cursor: pointer;
+  border: 2px  solid grey;
+  border-style: none;
+  width: 180px;
+  height: 40px;
+  background-color: mediumaquamarine;
+  border-radius: 45px;
+}*/
+
+
+.bg-body-tertiary{
+  width: 100%;
+  height: 10%;
+}
+  
+

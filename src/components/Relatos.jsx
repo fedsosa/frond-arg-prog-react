@@ -8,14 +8,15 @@ const Navegador=()=> {
    <>
    <div > 
    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container style={{background:"grey" }}>
+      <Container style={{ background:"powderblue"   }}>
         <Navbar.Brand href="/">Relatos de viajes</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Ver mas relatos</Nav.Link>
+            <Nav.Link href="/">Ver los relatos</Nav.Link>
             <Nav.Link href="/registrar">Registrarse</Nav.Link>
             <Nav.Link href="/Ingresar">Ingresar Usuario</Nav.Link>
+            <Nav.Link href="/posteo">Post</Nav.Link>
             <NavDropdown title="realizar" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
