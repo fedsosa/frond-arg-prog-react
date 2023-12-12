@@ -1,5 +1,5 @@
 
-import { Navegador} from './../components/Relatos.jsx'
+import { Navegador} from '../components/RelatosNavegComponentes.jsx'
 import Card from 'react-bootstrap/Card';
 
 

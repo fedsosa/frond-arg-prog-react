@@ -1,22 +1,19 @@
 
 import Card from 'react-bootstrap/Card';
-
-import TablaDeRelatos from './../components/TablaDeRelatos.jsx'
+import TablaDeRelatos from '../components/TablaDeRelatosComponentes.jsx'
 import { useState,useEffect } from 'react';
-
+import axios from 'axios';
 
 const Miportada=() =>{
   const [lista,setLista] = useState ([])
 
   const PonerListas= async () => {
+        const ListaDelBack =  await axios.get('http://localhost:3000/posteos')
 
-    setLista([
-    { relato:'blallblabla', usuario:'federico', comentario:'esoesoesoeso' },
-    { relato:'xxxxxxxx', usuario:'olga', comentario:'rosario' },
-    { relato:'byyyyyyyyyyy', usuario:'fmario', comentario:'rofo' },
-
-    ])
-
+    if(ListaDelBack.status===200){
+      setLista(ListaDelBack.data)
+    }
+   
 }
 
 useEffect ( ()=>{

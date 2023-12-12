@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import UsePosteo from './../components/AccionesDeUsuario'
+import UsePosteo from '../components/AccionesDeUsuario'
 
 
 
