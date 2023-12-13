@@ -10,8 +10,8 @@ import axios from 'axios';
 const IngresarUsuario=() => {
   const[usuario,setUsuario] = useState('')
   const[contraseña,setContraseña] = useState('')
-  const [deshabilitarBoton, setDeshabilitarBoton] = useState(false);
-  const [errores, setErrores] = useState({});
+  const[deshabilitarBoton, setDeshabilitarBoton] = useState(false);
+  const[errores, setErrores] = useState({});
 
   const navigate = useNavigate();
 
@@ -43,8 +43,7 @@ const IngresarUsuario=() => {
    
          setDeshabilitarBoton(true);
    
-         console.log(usuario);
-         console.log(contraseña);
+        
    
          await mandarDatos()
        }
@@ -52,17 +51,18 @@ const IngresarUsuario=() => {
      }
    
      const mandarDatos = async () => {
-       const url = ('http://localhost:3000/usuarios')
+       const url = ('http://localhost:3000/autenticar')
    
        const datos = {
+         
          usuario: usuario,
          contraseña: contraseña,
        }
       try {
-       const respuesta = await axios.get(url, datos);
+       const respuesta = await axios.post (url, datos);
    
        if (respuesta.status===200) {
-         return navigate('/verUsua')
+         //return navigate('/verUsua')
        } else {
          setErrores({ error: 'ocurrio un error al interno al registrarse' })
        }
@@ -119,7 +119,7 @@ const IngresarUsuario=() => {
         )
       }
 
-      <Button variant="success" onClick={verificarUsuario } disabled={deshabilitarBoton}>registar</Button>{' '}
+      <Button variant="success" onClick={verificarUsuario } disabled={deshabilitarBoton}>Ingresar</Button>{' '}
     </Form>
   );
 }
