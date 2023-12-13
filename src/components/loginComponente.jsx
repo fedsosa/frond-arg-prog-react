@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 const LoginUsuario = () => {
   const [usuario, setUsuario] = useState('');
   const [contraseña, setContraseña] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
   const [deshabilitarBoton, setDeshabilitarBoton] = useState(false);
   const [errores, setErrores] = useState({});
 
@@ -28,6 +30,18 @@ const LoginUsuario = () => {
     setContraseña(contraseñaValue);
   }
 
+  const insertarNombre = (e) => {
+    const nombreValue = e.target.value ;
+
+    setNombre(nombreValue);
+  }
+
+  const insertarApellido = (e) => {
+    const apellidoValue = e.target.value ;
+
+    setApellido(apellidoValue);
+  }
+
 
   const verificarLogin = async () => {
  let misErrores = {}
@@ -38,6 +52,14 @@ const LoginUsuario = () => {
     if (contraseña.length===0) {
 
       misErrores.contraseña = 'Debe introducir una contraseña'
+    }
+    if (nombre.length===0) {
+
+      misErrores.nombre = 'Debe introducir un nombre'
+    }
+    if (apellido.length===0) {
+
+      misErrores.apellido = 'Debe introducir un apellido'
     }
     setErrores( misErrores)
     
@@ -58,6 +80,8 @@ const LoginUsuario = () => {
     const datos = {
       usuario: usuario,
       contraseña: contraseña,
+      nombre: nombre,
+      apellido: apellido,
     }
    try {
     const respuesta = await axios.post(url, datos);
@@ -77,7 +101,7 @@ const LoginUsuario = () => {
 
   return (
     <Form>
-      <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+         <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
         <Form.Label column sm="2">
           Usuario
         </Form.Label>
@@ -94,16 +118,50 @@ const LoginUsuario = () => {
         </Col>
       </Form.Group>
 
-      <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+      <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
         <Form.Label column sm="2">
-          Contraseña
+          contraseña
         </Form.Label>
         <Col sm="10">
-          <Form.Control type="password" onInput={insertarContraseña} />
+          <Form.Control type='password' onInput={insertarContraseña} />
           {
             errores.contraseña && (
               <span style={{ color: 'red' }}>
                 {errores.contraseña}
+              </span>
+            )
+          }
+
+        </Col>
+      </Form.Group>
+
+      <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+        <Form.Label column sm="2">
+          Nombre
+        </Form.Label>
+        <Col sm="10">
+          <Form.Control type='text' onInput={insertarNombre} />
+          {
+            errores.nombre && (
+              <span style={{ color: 'red' }}>
+                {errores.nombre}
+              </span>
+            )
+          }
+
+        </Col>
+      </Form.Group>
+
+      <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+        <Form.Label column sm="2">
+          Apellido
+        </Form.Label>
+        <Col sm="10">
+          <Form.Control type="text" onInput={insertarApellido} />
+          {
+            errores.apellido && (
+              <span style={{ color: 'red' }}>
+                {errores.apellido}
               </span>
             )
           }

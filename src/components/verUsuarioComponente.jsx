@@ -10,12 +10,12 @@ const MostrarUsuario = (props) => {
   const navigate = useNavigate();
 
   const Postear = (id) => {
-    //navigate('/posteo' + id)
+    navigate('/posteo')
   }
 
 
   const Editar = (id) => {
-    //navigate('/editar' + id)
+    navigate('/editar/' + id)
   }
 
   const Borrar = (id) => {
@@ -29,22 +29,25 @@ const MostrarUsuario = (props) => {
         <tr>
           <th>#</th>
           <th>usuario</th>
-          <th>contraseña</th>
+          <th>nombre</th>
+          <th>apellido</th>
           <th>acciones</th>
         </tr>
       </thead>
       <tbody>
         {
           lista.map((item, key) => (
+            
             <tr key={key}>
-              <td>{ item._id }</td>
+              <td>{ key+1}</td>
               <td>{ item.usuario }</td>
-              <td>{ item.contraseña }</td>
+              <td>{ item.nombre }</td>
+              <td>{ item.apellido }</td>
               <td>
                 <ButtonGroup style={{maxWhidth :'20px'}} >
                   <Button variant="primary" onClick={() => Postear(item.id )}>postear</Button>
-                  <Button variant="danger" onClick={() => Borrar(item._id)}>eleiminar</Button>
-                  <Button variant="success" onClick={() => Editar (item.id )}>editar</Button>
+                  <Button variant="danger" onClick={() => Borrar(item._id)}>eliminar</Button>
+                  <Button variant="success" onClick={() => Editar (item._id )}>editar</Button>
                 </ButtonGroup>
               </td>
             </tr>

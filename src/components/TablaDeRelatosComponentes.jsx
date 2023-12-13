@@ -6,10 +6,7 @@ import { useNavigate } from "react-router-dom";
 const TablaDeRelatos = (props) => {
   const { lista } = props;
 
-  //const navigate = useNavigate();
-
-
-
+  
   return (
     <Table striped bordered hover variant="dark">
       <thead>
