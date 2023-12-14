@@ -9,7 +9,7 @@ import Miposteo from './views/PosteosVista.jsx';
 import Eliminar from './views/EliminarVista.jsx';
 import VerUsuario from './views/verElUsuarioVista.jsx';
 import Editar from './views/EditarVista.jsx';
-import Ver from './views/verUnUsuario.jsx'
+import Ver from './views/verUnUsuarioVista.jsx'
 
   const rutas = createBrowserRouter([
     {
@@ -34,7 +34,7 @@ import Ver from './views/verUnUsuario.jsx'
         path: "/editar/:id",
         element: <Editar/>,
        },{
-        path: "/ver/:id",
+        path: "/ver",
         element: <Ver/>,
        },
       

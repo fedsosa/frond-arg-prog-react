@@ -2,8 +2,17 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useAutent } from './../context/autentContex.jsx';
+
 
 const Navegador=()=> {
+  const {usuario, logout} = useAutent();
+ const desconectarUsuario = () =>{
+      logout();
+ }
+
+
+
   return (
    <>
    <div > 
@@ -14,20 +23,23 @@ const Navegador=()=> {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/">Ver los relatos</Nav.Link>
-            <Nav.Link href="/registrar">Registrarse</Nav.Link>
-            <Nav.Link href="/Ingresar">Ingresar Usuario</Nav.Link>
-            <Nav.Link href="/posteo">Post</Nav.Link>
-            <NavDropdown title="realizar" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+            
+            {
+               usuario ? (
+                 <>
+                 <Nav.Link onClick={desconectarUsuario}>Cerrar sesiôn</Nav.Link>
+                 <Nav.Link href="/posteo">Post</Nav.Link> 
+                 </>
+                 ) : (
+                      <>
+                      <Nav.Link href="/registrar">Registrarse</Nav.Link>
+                      <Nav.Link href="/Ingresar">Iniciar sesion</Nav.Link>
+                      </>
+
+                 )
+             }
+            
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

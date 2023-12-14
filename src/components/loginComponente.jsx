@@ -20,54 +20,54 @@ const LoginUsuario = () => {
   const navigate = useNavigate();
 
   const insertarUsuario = (e) => {
-    const usuarioValue = e.target.value ;
+    const usuarioValue = e.target.value;
 
     setUsuario(usuarioValue);
   }
   const insertarContraseña = (e) => {
-    const contraseñaValue = e.target.value ;
+    const contraseñaValue = e.target.value;
 
     setContraseña(contraseñaValue);
   }
 
   const insertarNombre = (e) => {
-    const nombreValue = e.target.value ;
+    const nombreValue = e.target.value;
 
     setNombre(nombreValue);
   }
 
   const insertarApellido = (e) => {
-    const apellidoValue = e.target.value ;
+    const apellidoValue = e.target.value;
 
     setApellido(apellidoValue);
   }
 
 
   const verificarLogin = async () => {
- let misErrores = {}
-    if (usuario.length===0) {
+    let misErrores = {}
+    if (usuario.length === 0) {
 
       misErrores.usuario = 'Debe introducir un Usuario'
     }
-    if (contraseña.length===0) {
+    if (contraseña.length === 0) {
 
       misErrores.contraseña = 'Debe introducir una contraseña'
     }
-    if (nombre.length===0) {
+    if (nombre.length === 0) {
 
       misErrores.nombre = 'Debe introducir un nombre'
     }
-    if (apellido.length===0) {
+    if (apellido.length === 0) {
 
       misErrores.apellido = 'Debe introducir un apellido'
     }
-    setErrores( misErrores)
-    
-    if (Object.entries(misErrores).length===0) {
+    setErrores(misErrores)
+
+    if (Object.entries(misErrores).length === 0) {
 
       setDeshabilitarBoton(true);
 
-     
+
 
       await mandarDatos()
     }
@@ -83,25 +83,25 @@ const LoginUsuario = () => {
       nombre: nombre,
       apellido: apellido,
     }
-   try {
-    const respuesta = await axios.post(url, datos);
+    try {
+      const respuesta = await axios.post(url, datos);
 
-    if (respuesta.status===200) {
-      return navigate('/verusua')
-    } else {
+      if (respuesta.status === 200) {
+        return navigate('/verusua')
+      } else {
+        setErrores({ error: 'ocurrio un error al interno al registrarse' })
+      }
+
+    } catch (error) {
       setErrores({ error: 'ocurrio un error al interno al registrarse' })
     }
- 
-   } catch (error) {
-    setErrores({ error: 'ocurrio un error al interno al registrarse' })
-   }
 
     setDeshabilitarBoton(false);
   }
 
   return (
     <Form>
-         <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+      <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
         <Form.Label column sm="2">
           Usuario
         </Form.Label>
@@ -178,7 +178,9 @@ const LoginUsuario = () => {
       }
 
 
-      <Button variant="success" onClick={verificarLogin } disabled={deshabilitarBoton} >registar</Button>
+      <Button variant="success" onClick={verificarLogin} disabled={deshabilitarBoton} >
+        registar
+      </Button>
     </Form>
   );
 }

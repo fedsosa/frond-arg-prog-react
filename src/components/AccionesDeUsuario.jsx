@@ -1,37 +1,60 @@
-import { Card, } from 'react-bootstrap';
+
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import ListGroup from 'react-bootstrap/ListGroup';
+import { useState,  useEffect } from 'react';
 
-const UsePosteo = (props) => {
-   // const [Dato,setDato] = useState ([])
+const UsePosteo = () => {
+    const [titulo, setTitulo] = useState('');
+    const [narrar, setNarrar] = useState('');
+    const [autor, setAutor] = useState('');
+    const [errores, setErrores] = useState({});
+    const [deshabilitarBoton, setDeshabilitarBoton] = useState(false);
 
- /* const PonerDatos= async () => {
+    const insertarTitulo = (e) => {
+        const tituloValue = e.target.value ;
+    
+        setTitulo(tituloValue);
+      }
+      const insertarNarrar= (e) => {
+        const narrarValue = e.target.value ;
+    
+        setNarrar(narrarValue);
+      }
+    
+      const insertarAutor= (e) => {
+        const autorValue = e.target.value ;
+    
+        setAutor(autorValue);
+      }
+     
+       const mandarDatos = async() => {
+           const url = ('http://localhost:3000/crearPost')
 
-    setDato([
-    { relato:'blallblabla', usuario:'federico', comentario:'esoesoesoeso' },
-    { relato:'xxxxxxxx', usuario:'olga', comentario:'rosario' },
-    { relato:'byyyyyyyyyyy', usuario:'fmario', comentario:'rofo' },
-
-    ])
-
-}*/
-
-/*useEffect ( ()=>{
-
-    PonerDatos ();
-
-}, []);*/
-
-
-
-
-
-    const { dato } = props;
-
-    const Postear = (id) => {
-        console.log('va a Editar el elemento ' + id)
-    }
+           const datos = {
+            tutulo: titulo,
+            narrar: narrar,
+            autor: autor,  
+          }
+          try {
+            const respuesta = await axios.post(url, datos);
+        console.log(respuesta )
+            if (respuesta.status===200) {
+              return navigate('/')
+            } else {
+              setErrores({ error: 'ocurrio un error al interno al registrarse' })
+            }
+         
+           } catch (error) {
+            setErrores({ error: 'ocurrio un error al interno al registrarse' })
+           }
+        
+            setDeshabilitarBoton(false);
+          }
+       
+           
 
 
     const Editar = (id) => {
@@ -42,35 +65,29 @@ const UsePosteo = (props) => {
         console.log('va a Borrar el elemento ' + id)
     }
 
+    
+    useEffect ( ()=>{
+
+      mandarDatos();
+    
+    }, []);
 
 
     return (
         <>
-            <Card style={{ width: '30rem' }}>
-                
-                <Card.Body>
-                    <Card.Title>Relatar</Card.Title>
-                    <Card.Text>
-                        Some quick example text to build on the card title and make up the
-                        bulk of the card's content.
-                    </Card.Text>
-                </Card.Body>
-                <ListGroup className="list-group-flush">
-                    <ListGroup.Item>titulo</ListGroup.Item>
-                    <ListGroup.Item>comentario</ListGroup.Item>
-                    <ListGroup.Item>fecha</ListGroup.Item>
-                </ListGroup>
-                <Card.Body>
-                    <Card.Link href="#">postear</Card.Link>
-                    <Card.Link href="#">editar</Card.Link>
-                </Card.Body>
-            </Card>
 
+            <Form.Control  type="text" onInput={insertarTitulo}  placeholder="Escriba un titulo" />
+            <br />
+            <Form.Control type="text" onInput={insertarNarrar} placeholder="Narrar un relato" />
+            <br />
+            <Form.Control  type="text" onInput={insertarAutor} placeholder="Escribe en autor" />
+
+            <br />
 
             <div>
                 <ButtonGroup aria-label="Basic example">
-                    <Button variant="primary" onClick={() => Postear(key)}>postear</Button>
-                    <Button variant="danger" onClick={() => Editar(key)}>eleiminar</Button>
+                    <Button variant="primary" onClick={mandarDatos}>postear</Button>
+                    <Button variant="danger" onClick={() => Editar(key)}>eliminar</Button>
                     <Button variant="success" onClick={() => Borrar(key)}>editar</Button>
                 </ButtonGroup>
             </div>
@@ -81,4 +98,4 @@ const UsePosteo = (props) => {
     );
 }
 
-export default UsePosteo
+export default UsePosteo;

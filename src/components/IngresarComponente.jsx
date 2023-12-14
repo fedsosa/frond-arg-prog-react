@@ -3,9 +3,11 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import {guardarDatos,guardarToken,} from './../../utils/ingresarUsuarioToken.js'
 import { useState,useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { useAutent } from '../context/autentContex.jsx';
 
 const IngresarUsuario=() => {
   const[usuario,setUsuario] = useState('')
@@ -13,6 +15,7 @@ const IngresarUsuario=() => {
   const[deshabilitarBoton, setDeshabilitarBoton] = useState(false);
   const[errores, setErrores] = useState({});
 
+  const {login} = useAutent();
   const navigate = useNavigate();
 
    const usarUsuario = (e) => {
@@ -45,13 +48,13 @@ const IngresarUsuario=() => {
    
         
    
-         await mandarDatos()
+           await mandarDatos();
        }
    
      }
    
      const mandarDatos = async () => {
-       const url = ('http://localhost:3000/autenticar')
+       const url = 'http://localhost:3000/autenticar'
    
        const datos = {
          
@@ -59,10 +62,18 @@ const IngresarUsuario=() => {
          contraseña: contraseña,
        }
       try {
-       const respuesta = await axios.post (url, datos);
+
+         const respuesta = await axios.post (url , datos)
+        
    
        if (respuesta.status===200) {
-         //return navigate('/verUsua')
+         
+         const {datos,token} = respuesta.data;
+
+         login(datos,token);
+
+         navigate('/verusua')
+
        } else {
          setErrores({ error: 'ocurrio un error al interno al registrarse' })
        }

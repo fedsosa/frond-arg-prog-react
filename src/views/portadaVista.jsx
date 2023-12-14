@@ -3,9 +3,12 @@ import Card from 'react-bootstrap/Card';
 import TablaDeRelatos from '../components/TablaDeRelatosComponentes.jsx'
 import { useState,useEffect } from 'react';
 import axios from 'axios';
+import { useAutent } from '../context/autentContex.jsx';
 
 const Miportada=() =>{
   const [lista,setLista] = useState ([])
+
+  const AutentContex = useAutent()
 
   const PonerListas= async () => {
         const ListaDelBack =  await axios.get('http://localhost:3000/posteos')
@@ -16,11 +19,12 @@ const Miportada=() =>{
    
 }
 
-useEffect ( ()=>{
+ useEffect ( ()=>{
 
   PonerListas ();
+    console.log(AutentContex)
 
-}, []);
+ }, []);
 
 
 

@@ -45,7 +45,7 @@ const MostrarUsuario = (props) => {
               <td>{ item.apellido }</td>
               <td>
                 <ButtonGroup style={{maxWhidth :'20px'}} >
-                  <Button variant="primary" onClick={() => Postear(item.id )}>postear</Button>
+                  <Button variant="primary" onClick={() => Postear(item._id )}>postear</Button>
                   <Button variant="danger" onClick={() => Borrar(item._id)}>eliminar</Button>
                   <Button variant="success" onClick={() => Editar (item._id )}>editar</Button>
                 </ButtonGroup>
