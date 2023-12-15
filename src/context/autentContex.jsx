@@ -10,6 +10,8 @@ const AutenContex=createContext();
 const AutentProvider= (props)=> {
     const {children} = props;
   const [usuario,setUsuario] =useState(obtenerDatos());
+  const [token,setToken] = useState (obtenerToken());
+
 
   const login=(datos,token)=>{
    
@@ -17,15 +19,16 @@ const AutentProvider= (props)=> {
     guardarToken(token);
 
     setUsuario(datos);
+    setToken(token);
   }
 
   const logout=()=>{
     limpiarLocalStorage();
     setUsuario(null);
-
+    setToken(null);
     }
   return (
-    <AutenContex.Provider value={{usuario, login,logout }}>
+    <AutenContex.Provider value={{usuario, token, login,logout }}>
         {children}
     </AutenContex.Provider>
   )

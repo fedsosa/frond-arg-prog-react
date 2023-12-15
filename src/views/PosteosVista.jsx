@@ -1,13 +1,13 @@
 import Card from 'react-bootstrap/Card';
-import UsePosteo from '../components/AccionesDeUsuario'
 
+import IngresarPosteo from './../components/posteoComponente.jsx'
 
 
 const MiPosteo =() =>{
   return (
     <> 
       <Card.Body>
-        <UsePosteo/>
+        <IngresarPosteo/>
       </Card.Body>
        
     </>
