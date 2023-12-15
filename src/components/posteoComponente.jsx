@@ -138,7 +138,7 @@ const IngresarPosteo=() => {
 
       <Button variant="success" onClick={verificarUsuario } disabled={deshabilitarBoton}>
         postear
-        </Button>
+        </Button> { }
     </Form>
   );
 }

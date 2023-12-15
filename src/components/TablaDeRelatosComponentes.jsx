@@ -6,6 +6,15 @@ import { useNavigate } from "react-router-dom";
 
 const TablaDeRelatos = (props) => {
   const { lista } = props;
+  const navigate = useNavigate();
+  
+  const Editar = (id) => {
+    navigate('/editarPost/' + id)
+  }
+
+  const Borrar = (id) => {
+    navigate('/eliminarPost/' + id )
+  }
 
   
   return (
@@ -16,7 +25,8 @@ const TablaDeRelatos = (props) => {
           <th>Titulo</th>
           <th>Narrar</th>
           <th>Autor</th>
-          <th>comentarios</th>
+          <th>Comentarios</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -27,9 +37,9 @@ const TablaDeRelatos = (props) => {
               <td>{item.titulo}</td>
               <td>{item.narrar}</td>
               <td>{'Autor'}</td>
+              <td>{item.comentario}</td>
               <td>
               <ButtonGroup style={{maxWhidth :'20px'}} >
-                  <Button variant="primary" onClick={() => Postear(item._id )}>postear</Button>
                   <Button variant="danger" onClick={() => Borrar(item._id)}>eliminar</Button>
                   <Button variant="success" onClick={() => Editar (item._id )}>editar</Button>
                 </ButtonGroup>
